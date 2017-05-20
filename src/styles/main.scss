@@ -12,6 +12,10 @@ body {
 
 a {
     text-decoration: none;
+    color: $primary-brand-color;
+    &:hover{
+      text-decoration: underline;
+    }
 }
 
 .btn {
@@ -96,24 +100,21 @@ li {
     color: #37474F;
 }
 
-@include bp-mobile {
-    header h1 {
-        font-size: 2.55em;
-    }
-    .code-block code {
-        display: block;
-    }
-}
-
-@media(max-width:843px) {
-    .btn-download {
-        margin-bottom: 1.5em;
-    }
-}
-
 /*----Custom----*/
-body{
+body, html {
   height: 100%;
+  background: #F6F7F8;
+}
+.full-screen-container{
+  display: table;
+  overflow: scroll;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 main.campaign{
   display: -webkit-flex;
@@ -123,12 +124,109 @@ main.campaign{
     position: absolute;
     top: 0;
     right: 0;
-    padding: 5px;
+    margin-top: 12px;
+    margin-right: 15px;
+    a{
+      font-size: 16px;
+      color: #BCC1C5;
+      padding: 5px;
+      &:hover{
+        text-decoration: underline;
+      }
+      &.active{
+        color: $primary-text-color;
+        cursor: default;
+        &:hover{
+          text-decoration: none;
+        }
+      }
+    }
   }
-  .banner{
-    background: grey;
-    -webkit-flex: 7;
+  .main-banner{
     flex: 7;
+    -webkit-flex: 7;
+    display: flex;
+    -webkit-display: flex;
+    background: #F6F7F8 url("../files/img/background@2x.png") top center no-repeat;
+    background-size: cover;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    justify-content: center;
+    -webkit-justify-content: center;
+    position: relative;
+    .logo-container{
+      height: 109px;
+      width: 100%;
+      margin-top: 30px;
+      padding: 0 30px;
+      box-sizing: border-box;
+      display: flex;
+      -webkit-display: flex;
+      -webkit-justify-content: space-between;
+      justify-content: space-between;
+      .logo{
+        width: 180px;
+        height: 109px;
+      }
+      .qrcode{
+        width: 100px;
+        height: 100px;
+      }
+    }
+    .banner-container{
+      width: 580px;
+      height: 530px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 60px;
+      margin: 0 auto;
+      z-index: 5;
+      .dog{
+        width: 200px;
+        height: 329px;
+        position: absolute;
+        z-index: 7;
+        background: transparent url("../files/img/dog@2x.png") top center no-repeat;
+        background-size: 200px 329px;
+        bottom: 0;
+        left:-130px;
+      }
+      .cat{
+        width: 402px;
+        height: 228px;
+        position: absolute;
+        z-index: 5;
+        background: transparent url("../files/img/cat@2x.png") top center no-repeat;
+        background-size: 402px 228px;
+        bottom: 0;
+        right: -155px;
+      }
+      .banner{
+        width: 580px;
+        height: 530px;
+        position: relative;
+        z-index: 6;
+      }
+    }
+    .footer{
+      width: 100%;
+      height: 150px;
+      background: white;
+      align-self: flex-end;
+      -webkit-align-self: flex-end;
+      display: flex;
+      -webkit-display: flex;
+      justify-content: center;
+      -webkit-justify-content: center;
+      align-items: flex-end;
+      -webkit-align-items: flex-end;
+      padding-bottom: 25px;
+      box-sizing: border-box;
+      .info{
+        margin: 0 8px;
+      }
+    }
   }
   .form-container{
     background: white;
@@ -144,6 +242,8 @@ main.campaign{
     position: relative;
     padding: 60px 30px 0;
     box-sizing: border-box;
+    box-shadow: 0px 5px 80px rgba(0,0,0,0.2);
+    z-index: 10;
     .flex-row{
       display: flex;
       display: -webkit-flex;
@@ -155,6 +255,7 @@ main.campaign{
     }
     .footer{
       align-self:flex-end;
+      -webkit-align-self:flex-end;
       width: 100%;
       text-align: center;
       padding: 20px 0 25px;
@@ -171,7 +272,7 @@ main.campaign{
       text-align: center;
       font-size: 32px;
       line-height: 42px;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
       color: $heading-text-color;
     }
   }
@@ -182,7 +283,7 @@ main.campaign{
 }
 .form-group{
   margin-bottom: 20px;
-  font-size: 20px;
+  font-size: 18px;
   &.double{
     display: flex;
     display: -webkit-flex;
@@ -195,6 +296,8 @@ main.campaign{
   }
   input{
     font-family: $font-base;
+    -webkit-transition: all .1s;
+    transition: all .1s;
   }
   input[type='text'],
   input[type='number'],
@@ -204,7 +307,7 @@ main.campaign{
     border: 2px solid #D1D4D8;
     width: 100%;
     height: 50px;
-    font-size: 20px;
+    font-size: 18px;
     box-sizing: border-box;
     padding-left: 15px;
     padding-right: 15px;
@@ -239,5 +342,47 @@ main.campaign{
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    cursor: pointer;
+    &:hover{
+      background-color: darken($primary-brand-color, 5%);
+    }
+    &:focus{
+      outline: 0;
+      background-color: darken($primary-brand-color, 15%);
+    }
   }
+}
+
+
+@include bp-mobile {
+  main.campaign{
+    .main-banner{
+      display: none;
+    }
+  }
+}
+
+@media(max-width:1000px) {
+    main.campaign{
+      .dog{
+        display: none;
+      }
+      .cat{
+        display: none;
+      }
+      .main-banner{
+        //background: #EBEDEE;
+        .banner-container{
+            width: 100%;
+            overflow: hidden;
+            bottom: 100px;
+            .banner{
+              width: 100%;
+              height: auto;
+              bottom: 0;
+              position: absolute;
+            }
+        }
+      }
+    }
 }

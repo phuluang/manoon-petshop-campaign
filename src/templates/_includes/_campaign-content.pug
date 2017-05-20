@@ -1,54 +1,73 @@
-main.campaign
-  section.banner
-  section.form-container
-    .languages
-      a(href='#')
-        |ไทย
-      a(href='#')
-        |English
-    .flex-row
-      .topic
-        h2
-          b ลงทะเบียนเพื่อรับข่าวสาร และโปรโมชั่น
-      .form-wrap
-        form
-          .form-group.double
-            .inner
-              .label ชื่อ
+.full-screen-container
+  main.campaign
+    section.main-banner
+      .logo-container
+        img.logo(src='/assets/files/img/manoon-logo@2x.png' alt='manoon-petshop-logo')
+        img.qrcode(src='/assets/files/img/line-qr@2x.png' alt='manoon-petshop-qr-code')
+      .banner-container
+        .dog
+        img.banner(src='/assets/files/img/banner@2x.png' alt='banner')
+        .cat
+      .footer
+        .info
+          | Email:
+          a(href='mailto:info@manoonpetshop.co.th')
+            |
+            | info@manoonpetshop.co.th
+        .info
+          | Tel:
+          a(href='tel:027137400')
+            |
+            | 0-2713-7400
+    section.form-container
+      .languages
+        a.active(href='#')
+          | ไทย
+        a(href='#')
+          | English
+      .flex-row
+        .topic
+          h2
+            b ลงทะเบียนเพื่อรับข่าวสาร และโปรโมชั่น
+        .form-wrap
+          form
+            .form-group.double
+              .inner
+                .label ชื่อ
+                input(
+                  type='text'
+                  name='firstname'
+                )
+              .inner
+                .label สกุล
+                input(
+                  type='text'
+                  name='lastname'
+                )
+            .form-group
+              .label อีเมล
+              input(
+                type='email'
+                name='email'
+                placeholder='example@mail.com'
+              )
+            .form-group
+              .label เบอร์โทรศัพท์
+              input(
+                type='tel'
+                name='phone'
+              )
+            .form-group
+              .label สัตว์เลี้ยง
               input(
                 type='text'
-                name='firstname'
+                name='pets'
+                placeholder='เช่น สุนัข, แมว, นก, กระต่าย เป็นต้น'
               )
-            .inner
-              .label สกุล
+            .form-group
               input(
-                type='text'
-                name='lastname'
+                type='submit'
+                value='ลงทะเบียน'
               )
-          .form-group
-            .label อีเมล
-            input(
-              type='email'
-              name='email'
-              placeholder='example@mail.com'
-            )
-          .form-group
-            .label เบอร์โทรศัพท์
-            input(
-              type='tel'
-              name='phone'
-            )
-          .form-group
-            .label สัตว์เลี้ยง
-            input(
-              type='text'
-              name='pets'
-              placeholder='เช่น สุนัข, แมว, นก, กระต่าย เป็นต้น'
-            )
-          .form-group
-            input(
-              type='submit'
-              value='ลงทะเบียน'
-            )
-    .footer
-      | &copy; Manoon Pet Shop 2017
+      .footer
+        | &copy; Manoon Pet Shop 2017
